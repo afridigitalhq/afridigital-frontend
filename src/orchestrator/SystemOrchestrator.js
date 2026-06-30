@@ -1,3 +1,4 @@
+import AfriRuntimeRegistry from '../core/runtime/AfriRuntimeRegistry.js';
 import { store } from "../core/store.js";
 
 export class SystemOrchestrator {
@@ -26,3 +27,7 @@ export class SystemOrchestrator {
 }
 
 export const orchestrator = new SystemOrchestrator();
+
+AfriRuntimeRegistry.register('SystemOrchestrator', orchestrator);
+
+export default orchestrator;

@@ -5,13 +5,14 @@ import CommandParser from './CommandParser.js';
 import CommandRegistry from './CommandRegistry.js';
 
 class CommandDock {
-  constructor(engine) {
+  constructor(engine, parser) {
     this.engine = engine;
+    this.parser = parser;
     this.parser = new CommandParser();
   }
 
   execute(input) {
-    const result = this.const result = parser.parse(input);
+    const result = this.parser.parse(input);
 
     if (!result.allowed) {
       return { status: 'blocked', command: result.command };
@@ -19,7 +20,8 @@ class CommandDock {
 
     switch (result.command) {
       case 'activateModule':
-        const resultExec = this.engine[result.action]?.(...(result.args || []));
+        const r = result;
+        const resultExec = this.engine[r.action]?.(...(r.args || []));
 
     const executionId = Date.now();
 
