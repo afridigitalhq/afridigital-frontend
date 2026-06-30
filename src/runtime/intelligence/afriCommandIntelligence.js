@@ -1,0 +1,1 @@
+export function analyzeCommand(input=""){const parts=input.trim().split(" ");const cmd=parts[0]||"unknown";const args=parts.slice(1);const intentMap={boot:"BOOT",run:"RUN",deploy:"DEPLOY",health:"HEALTH",insight:"INSIGHT"};return{raw:input,cmd,args,intent:intentMap[cmd]||"UNKNOWN",normalized:{command:cmd,arguments:args}};}

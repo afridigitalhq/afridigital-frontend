@@ -1,0 +1,9 @@
+src/components/afriai/integration/AfriAIBootstrap.js
+src/core/bootstrap.js
+src/core/afriAI.bootstrap.safe.js
+src/core/afriai/bootstrap.js
+src/shell/runtime/ShellBootstrap.js
+src/kernel/afriai/bootstrapAfriKernel.js
+src/core.backup.1782603027/bootstrap.js
+src/core.backup.1782603027/afriAI.bootstrap.safe.js
+src/core.backup.1782603027/afriai/bootstrap.js

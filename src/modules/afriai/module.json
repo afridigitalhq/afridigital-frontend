@@ -1,0 +1,6 @@
+{
+  "id":"afriai",
+  "enabled":true,
+  "version":"1.0.0",
+  "entry":"index.jsx"
+}

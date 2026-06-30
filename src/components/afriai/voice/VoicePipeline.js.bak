@@ -1,0 +1,4 @@
+export default class VoicePipeline {
+  start(){ console.log("🎤 Voice listening started"); }
+  stop(){ console.log("🛑 Voice listening stopped"); }
+}

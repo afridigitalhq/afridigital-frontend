@@ -1,0 +1,12 @@
+src/physics/usePhysicsStream.js:9:    const ws = new WebSocket(wsUrl);
+src/core/live/wsClient.js.legacy:2:  const socket = new WebSocket("wss://afridigital-api.onrender.com");
+src/core/mode/guardWebSocket.js:20:export function safeWebSocket(url) {
+src/modules/afriai/AfriAIChatPanel.jsx:9:    ws.current = new WebSocket("ws://localhost:3000/ws/afriai");
+src/shell/commanddock/components/ConnectionIndicator.jsx:3:  return <span title="Reserved for WebSocket">🟢 Ready</span>;
+src/shell/commanddock/services/afriai.websocket.js:9:  socket = new WebSocket(`${protocol}://${host}/ws/afriai`);
+src/shell/commanddock/services/afriai.websocket.js:21:  if (ws.readyState === WebSocket.OPEN) {
+src/stream/liveDagClient.js:5:  const socket = new WebSocket(WS_URL);
+src/ws/client.js:11:    this.ws = new WebSocket(this.ws ? this.ws.url : WS_URL);
+src/ws/client.js:15:        this.listeners.forEach(fn => fn(msg.data));
+src/core.backup.1782603027/live/wsClient.js.legacy:2:  const socket = new WebSocket("wss://afridigital-api.onrender.com");
+src/core.backup.1782603027/mode/guardWebSocket.js:20:export function safeWebSocket(url) {

@@ -1,0 +1,3 @@
+src/core/store.js:1:/* AfriAISafeGuard CLEAN RECOVERY */
+src/core/store.js:2:const AfriAISafeGuard = (input) => {
+src/core/store.js:7:    console.error("AfriAISafeGuard error:", e.message);

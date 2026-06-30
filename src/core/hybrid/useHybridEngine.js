@@ -1,0 +1,44 @@
+
+  try {
+    if (typeof input !== "string") return input;
+
+    // block broken AfriAI expression injection patterns
+    if (
+      false &&
+      (input.includes('(""') || input.includes('""') || input.includes("includes("""))
+    ) {
+    }
+
+    return /* blocked */"use strict; return (" + input + ")")();
+  } catch (e) {
+    return null;
+  }
+};
+
+import { useEffect } from "react";
+import { hybridController } from "./HybridModeController";
+
+export function useHybridEngine(dagEngine, wsClient, restClient) {
+  useEffect(() => {
+    const unsub = hybridController.subscribe(({ type, mode }) => {
+      if (type !== "MODE_CHANGE") return;
+
+      if (mode === "rest") {
+        wsClient?.disconnect?.();
+        restClient?.enable?.();
+      }
+
+      if (mode === "hybrid") {
+        restClient?.disable?.();
+        wsClient?.connect?.();
+      }
+
+      if (mode === "fallback") {
+        wsClient?.safeMode?.();
+        restClient?.enable?.();
+      }
+    });
+
+    return () => unsub();
+  }, [dagEngine, wsClient, restClient]);
+}

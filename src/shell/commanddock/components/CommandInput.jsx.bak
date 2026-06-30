@@ -1,0 +1,9 @@
+import React from "react";
+export default function CommandInput(){
+  return (
+    <input
+      placeholder="Ask AfriAI anything across AfriDigital..."
+      disabled
+    />
+  );
+}

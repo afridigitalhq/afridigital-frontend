@@ -1,0 +1,58 @@
+import VoicePipeline from "../voice/VoicePipeline";
+import { sendCommand } from "../api/AfriAIClient";
+import ConversationHistory from "../history/ConversationHistory";
+import { resolveModule } from "../modules/ModuleResolver";
+import AIStateManager from "../state/AIStateManager";
+
+const voice = new VoicePipeline();
+const history = new ConversationHistory();
+
+export async function startListening(){
+  AIStateManager.setState({status:"listening",listening:true});
+  voice.start();
+}
+
+export function stopListening(){
+  voice.stop();
+  AIStateManager.setState({status:"online",listening:false});
+}
+
+export async function submitCommand(command){
+  AIStateManager.setState({
+    status:"thinking",
+    processing:true,
+    lastCommand:command
+  });
+
+  history.add("user",command);
+
+  try{
+    const response = await sendCommand({
+      module: resolveModule(),
+      command
+    });
+
+    AIStateManager.setState({
+      status:"responding",
+      processing:false,
+      lastResponse:response
+    });
+
+    history.add("assistant",response);
+  }catch(err){
+    AIStateManager.setState({
+      status:"error",
+      processing:false
+    });
+  }
+}
+
+export function syncModule(){
+  AIStateManager.setState({
+    activeModule: resolveModule()
+  });
+}
+
+export function getHistory(){
+  return history.all();
+}

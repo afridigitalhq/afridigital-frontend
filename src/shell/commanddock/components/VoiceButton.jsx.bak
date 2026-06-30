@@ -1,0 +1,4 @@
+import React from "react";
+export default function VoiceButton(){
+  return <button disabled title="Voice reserved for future">🎤</button>;
+}

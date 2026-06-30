@@ -1,0 +1,12 @@
+src/physics/usePhysicsStream.js:13:      const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/runtime/raf/useFrameStabilizer.js:18:        buffer.current = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/visual/gpu-advection/useParticleFlow.js:49:          const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/visual/gpu-soc/useSOCCompositor.js:41:          const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/visual/soc-shockwave/useShockwaveSystem.js:37:          const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/core/mode/controller/HybridControllerV2.js:57:      this.dagEngine.update(node.id, validateAfriAIResponse(safeParseAfriAI(msg.data)));
+src/core/hybrid/HybridControllerV3.js:83:          const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/core/stream/dagStreamClient.js:38:        const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/stream/liveDagClient.js:21:      const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/viz/runtime/liveDagBridge.js:6:      const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/viz/runtime/liveDagRuntime.js:8:      const data = validateAfriAIResponse(safeParseAfriAI(msg.data));
+src/ws/client.js:14:        const data = validateAfriAIResponse(safeParseAfriAI(msg.data));

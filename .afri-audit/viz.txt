@@ -1,0 +1,33 @@
+src/visual/gpu/useGPUFieldOverlay.js:4: * WebGL overlay for heat/propagation field rendering
+src/dag/webgl/DagWebGL.jsx:3:export default function DagWebGL({ nodes, edges }) {
+src/dag/webgl/DagWebGL.jsx.fixref.backup:4:export default function DagWebGL({ nodes, edges }) {
+src/dag/webgl/DagWebGL.jsx.fixref.backup:20:    const renderer = new THREE.WebGLRenderer({ antialias: false });
+src/dag/webgl/DagWebGL.jsx.frame.backup:4:export default function DagWebGL({ nodes, edges }) {
+src/dag/webgl/DagWebGL.jsx.frame.backup:20:    const renderer = new THREE.WebGLRenderer({ antialias: false });
+src/conscious/graph/TemporalCausalGraph3D.js:10:  const renderer = new THREE.WebGLRenderer({ antialias: true });
+src/consciousness/shell/ConsciousnessShell.jsx:4:import DagWebGL from "../../dag/webgl/DagWebGL";
+src/consciousness/shell/ConsciousnessShell.jsx:34:          <DagWebGL nodes={nodes} edges={edges} />
+src/consciousness/shell/ConsciousnessShell.jsx.bak:4:import DagWebGL from "../../dag/webgl/DagWebGL";
+src/consciousness/shell/ConsciousnessShell.jsx.bak:34:          <DagWebGL nodes={nodes} edges={edges} />
+src/fusion/DagFusionWebGL.jsx:4:export default function DagFusionWebGL({ nodes, edges, fusion }) {
+src/fusion/DagFusionWebGL.jsx:20:    const renderer = new THREE.WebGLRenderer({ antialias: true });
+src/fusion/metaverse/opsMetaverseWorld.js:16:  const renderer = new THREE.WebGLRenderer({ antialias: true });
+src/live/webglHook.js:1:export function attachWebGLUpdate(renderer, getNodes) {
+src/strategy/sim/immersiveOpsMetaverse.js:16:  const renderer = new THREE.WebGLRenderer({ antialias: true });
+src/ui/admin/live/LiveDagPanel.jsx:2:import { bindWebGLLive } from "../../../viz/runtime/webglLiveRenderer";
+src/ui/admin/live/LiveDagPanel.jsx:12:    bindWebGLLive(canvasRef, () => nodes);
+src/ui/admin/live/useAdminLiveDag.js:3:import { bindLiveDag } from "../../../viz/runtime/liveDagBridge";
+src/ui/admin/live/useAdminLiveDag.js:10:    bindLiveDag(socket, setNodes);
+src/ui/admin/live/useLiveDag.js:3:import { bindLiveDagStream } from "../../../viz/runtime/liveDagRuntime";
+src/ui/admin/live/useLiveDag.js:11:    bindLiveDagStream(socket, (event) => {
+src/ui/admin/live/useLiveDagStream.js:3:import { bindLiveDag } from "../../../viz/runtime/liveDagBridge";
+src/ui/admin/live/useLiveDagStream.js:13:    bindLiveDag(
+src/ui/admin/viz/DagVizPanel.jsx:2:import { initWebGLDag } from "../../../viz/webgl/dagWebGLRenderer";
+src/ui/admin/viz/DagVizPanel.jsx:9:      initWebGLDag(ref.current, nodes);
+src/ui/admin/viz/DagVizPanel.jsx:15:      <h3>🌐 Live DAG WebGL View</h3>
+src/viz/runtime/liveDagBridge.js:1:export function bindLiveDag(socket, onNodes, onEvents, onHeatmap) {
+src/viz/runtime/liveDagRuntime.js:3:export function bindLiveDagStream(socket, onNodes) {
+src/viz/runtime/webglFrameSync.js:1:export function bindWebGLFrame(canvasRef, nodesGetter) {
+src/viz/runtime/webglLiveRenderer.js:1:export function bindWebGLLive(canvasRef, getNodes) {
+src/viz/webgl/dagWebGLRenderer.js:1:export function initWebGLDag(canvas, nodes = []) {
+src/world/engine/WorldEngine3D.js:16:  const renderer = new THREE.WebGLRenderer({ antialias: true });

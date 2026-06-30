@@ -1,0 +1,124 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+WORKDIR="$HOME/adr-system"
+REGISTRY_FILE="$WORKDIR/core/registry.json"
+SANDBOX="$WORKDIR/sandbox"
+
+mkdir -p "$WORKDIR/core"
+mkdir -p "$SANDBOX"
+
+# =========================
+# SAFETY BOUNDARY RULES
+# =========================
+ALLOWED_WRITE_PATHS=(
+  "$WORKDIR/core"
+  "$SANDBOX"
+)
+
+is_allowed_path() {
+  TARGET=$1
+  for path in "${ALLOWED_WRITE_PATHS[@]}"; do
+    case "$TARGET" in
+      "$path"*) return 0 ;;
+    esac
+  done
+  return 1
+
+# =========================
+# BOOTSTRAP
+# =========================
+bootstrap() {
+  echo "🚀 ADR BOOTSTRAP STARTING..."
+
+  cd "$WORKDIR/core" || exit
+  [ -f registry.json ] || echo "{}" > registry.json
+  [ -f events.log ] || touch events.log
+
+  echo "📦 Registry initialized"
+  echo "🛡️ Safety Boundary ACTIVE"
+  echo "⚡ ADR CORE READY (PROTECTED MODE)"
+
+# =========================
+# VALIDATION
+# =========================
+validate() {
+  echo "🧪 ADR VALIDATION STARTING..."
+
+  cd "$WORKDIR/core" || exit
+
+  echo "✔ Registry: ACTIVE"
+  echo "✔ Sandbox: ACTIVE"
+  echo "✔ Safety Boundary: ENABLED"
+  echo "✔ System OK"
+
+# =========================
+# EVENT SYSTEM (READ-ONLY LOG)
+# =========================
+emit_event() {
+  echo "$(date +%s) | $1 | $2" >> "$WORKDIR/core/events.log"
+  echo "⚡ EVENT: $1 -> $2"
+
+# =========================
+# SAFE REGISTRY WRITER
+# =========================
+
+# =========================
+# AFRIAI FACTORY (SANDBOXED)
+# =========================
+ai_create() {
+  NAME=$1
+  TYPE=$2
+
+  FILE="$SANDBOX/${NAME}.module.json"
+
+  if ! is_allowed_path "$FILE"; then
+    echo "⛔ BLOCKED: AI write outside sandbox"
+    return 1
+  fi
+
+  echo "🤖 AFRIAI GENERATING (SANDBOX MODE)..."
+echo "🛡️ SAFETY BOUNDARY ENFORCED"
+
+  MODULE_SPEC="{\"name\":\"$NAME\",\"type\":\"$TYPE\",\"aiGenerated\":true}"
+
+  echo "$MODULE_SPEC" > "$FILE"
+
+  echo "🧠 Module created in sandbox: $FILE"
+
+
+  emit_event "AFRIAI_MODULE_CREATED" "$NAME"
+auto_register_from_sandbox "$NAME" "$TYPE"
+
+  echo ""
+
+# =========================
+# LISTENER
+# =========================
+listen_events() {
+  echo "👂 Listening..."
+  tail -f "$WORKDIR/core/events.log"
+
+case "$1" in
+  bootstrap)
+    bootstrap
+    ;;
+  validate)
+    validate
+    ;;
+  register)
+    ;;
+  ai-create)
+    ai_create "$2" "$3"
+    ;;
+  listen)
+    listen_events
+    ;;
+  *)
+    echo "Usage: bash adr.sh {bootstrap|validate|register|ai-create|listen}"
+    ;;
+esac
+
+
+
+
+

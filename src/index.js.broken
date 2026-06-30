@@ -1,0 +1,114 @@
+
+/* ================================
+   AFRIAI DETERMINISTIC KERNEL
+   NO EXECUTION, NO EVAL, NO CODE GEN
+================================ */
+
+globalThis.AfriAI = {
+  version: "kernel-1.0",
+
+  /**
+   * ONLY ALLOWED INTERFACE:
+   * Structured command execution
+   */
+  dispatch(command) {
+    if (!command || typeof command !== "object") {
+      throw new Error("AfriAI kernel only accepts structured commands");
+    }
+
+    if (!command.type || !command.action) {
+      throw new Error("Invalid AfriAI command schema");
+    }
+
+    return AfriAI.router(command);
+  },
+
+  router(command) {
+    const key = command.type + ":" + command.action;
+    const handler = AfriAI.handlers[key];
+
+    if (!handler) {
+      console.warn("Unknown command:", key);
+      return null;
+    }
+
+    return handler(command.payload || {});
+  },
+
+  handlers: {}
+};
+
+/**
+ * SAFE ERROR BOUNDARY (NO CRASH PROPAGATION)
+ */
+process.on("uncaughtException", (err) => {
+  console.error("🛑 Kernel blocked crash:", err.message);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("🛑 Kernel blocked rejection:", err);
+});
+
+
+/* AFRIAI GLOBAL EXECUTION LOCK */
+globalThis.AfriAI = globalThis.AfriAI || {};
+
+globalThis.AfriAI.dispatch = function (cmd) {
+  try {
+    if (!cmd || typeof cmd !== "object") {
+      throw new Error("Invalid AfriAI command (must be object)");
+    }
+    return cmd;
+  } catch (e) {
+    console.error("AfriAI BLOCKED:", e.message);
+    return null;
+  }
+};
+
+process.on("uncaughtException", (err) => {
+  console.error("🛑 Crash prevented:", err.message);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("🛑 Promise crash prevented:", err);
+});
+
+
+/* AfriAI Runtime Shield */
+globalThis.AfriAI_SAFE_EXEC = function (input) {
+  try {
+    if (typeof input !== "object") {
+      throw new Error("AfriAI only accepts structured commands");
+    }
+    return input;
+  } catch (e) {
+    console.error("AfriAI BLOCKED:", e.message);
+    return null;
+  }
+};
+
+process.on("uncaughtException", (err) => {
+  console.error("🔥 Crash intercepted:", err.message);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("🔥 Promise rejection intercepted:", err);
+});
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

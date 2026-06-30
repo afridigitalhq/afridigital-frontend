@@ -1,0 +1,72 @@
+src/dag/webgl/DagWebGL.jsx:4:export default function DagWebGL({ nodes, edges }) {
+src/dag/webgl/DagWebGL.jsx.fixref.backup:4:export default function DagWebGL({ nodes, edges }) {
+src/dag/webgl/DagWebGL.jsx.frame.backup:4:export default function DagWebGL({ nodes, edges }) {
+src/dag/DagEngine.jsx:3:export default function DagEngine({ events }) {
+src/dag/observability/eventBridge.js:3:export function mapDagEvents(dagNodes = []) {
+src/dag/observability/eventBridge.js:11:export function attachDagStream(socket, callback) {
+src/dag/observability/eventBridge.js:13:    callback(mapDagEvents(data.nodes || []));
+src/bridge/dag/dagRendererBridge.js:3:import { enhanceDag } from "../../integrations/dag/dagHybridBridge";
+src/bridge/dag/dagRendererBridge.js:5:export function buildDagFrame(nodes, systemState) {
+src/bridge/dag/dagRendererBridge.js:6:  const enhanced = enhanceDag(nodes, systemState);
+src/core/dag/DagConsciousBridge.js:20:export function bindDagToConsciousness(dagEngine) {
+src/core/dag/DagConsciousBridge.js:21:  dagEngine.onUpdate = (state) => {
+src/core/dag/DagNarrationBridge.js:20:export function narrateDagEvent(event) {
+src/core/dag/connectDagToConsciousness.js:20:export function connectDag(dagEngine) {
+src/core/dag/connectDagToConsciousness.js:21:  if (!dagEngine) return;
+src/core/dag/connectDagToConsciousness.js:23:  dagEngine.subscribe?.((state) => {
+src/core/rest/api.js:25:export async function fetchDag() {
+src/core/mode/controller/HybridControllerV2.js:19:  constructor({ wsFactory, restClient, dagEngine, gpuMonitor }) {
+src/core/mode/controller/HybridControllerV2.js:22:    this.dagEngine = dagEngine;
+src/core/mode/controller/HybridControllerV2.js:57:      this.dagEngine.update(node.id, validateAfriAIResponse(safeParseAfriAI(msg.data)));
+src/core/hybrid/HybridControllerV3.js:19:  constructor({ wsFactory, restClient, gpuMonitor, dagEngine }) {
+src/core/hybrid/HybridControllerV3.js:23:    this.dagEngine = dagEngine;
+src/core/hybrid/HybridControllerV3.js:84:          this.dagEngine?.update(node.id, data);
+src/core/hybrid/useHybridEngine.js:21:export function useHybridEngine(dagEngine, wsClient, restClient) {
+src/core/hybrid/useHybridEngine.js:43:  }, [dagEngine, wsClient, restClient]);
+src/core/stream/dagStreamClient.js:18:import { normalizeDagEvent } from "./dagStreamContract";
+src/core/stream/dagStreamClient.js:20:export function createDagStream(socket) {
+src/core/stream/dagStreamClient.js:29:    const normalized = normalizeDagEvent(event);
+src/core/stream/dagStreamContract.js:26:export function normalizeDagEvent(event) {
+src/consciousness/shell/ConsciousnessShell.jsx:4:import DagWebGL from "../../dag/webgl/DagWebGL";
+src/consciousness/shell/ConsciousnessShell.jsx:34:          <DagWebGL nodes={nodes} edges={edges} />
+src/consciousness/shell/ConsciousnessShell.jsx.bak:4:import DagWebGL from "../../dag/webgl/DagWebGL";
+src/consciousness/shell/ConsciousnessShell.jsx.bak:34:          <DagWebGL nodes={nodes} edges={edges} />
+src/fusion/DagFusionWebGL.jsx:4:export default function DagFusionWebGL({ nodes, edges, fusion }) {
+src/integrations/dag/dagHybridBridge.js:6:export function enhanceDag(nodes, systemState) {
+src/live/dagBinder.js:1:import { createDagStream } from "./dagStreamClient";
+src/live/dagBinder.js:3:export function bindDagStream(socket, { onNodes }) {
+src/live/dagBinder.js:4:  const stream = createDagStream(socket);
+src/live/dagStreamClient.js:1:export function createDagStream(socket) {
+src/stream/liveDagClient.js:4:export function createLiveDagSocket() {
+src/ui/admin/hooks/useDagFeed.js:3:export function useDagFeed(socket) {
+src/ui/admin/index.js:1:export { default as DagLivePanel } from "./widgets/DagLivePanel";
+src/ui/admin/live/DagLiveDashboard.jsx:2:import { useLiveDag } from "./useLiveDag";
+src/ui/admin/live/DagLiveDashboard.jsx:4:export default function DagLiveDashboard() {
+src/ui/admin/live/DagLiveDashboard.jsx:5:  const state = useLiveDag();
+src/ui/admin/live/LiveDagAutoPanel.jsx:2:import { useAdminLiveDag } from "./useAdminLiveDag";
+src/ui/admin/live/LiveDagAutoPanel.jsx:4:export default function LiveDagAutoPanel() {
+src/ui/admin/live/LiveDagAutoPanel.jsx:5:  const nodes = useAdminLiveDag();
+src/ui/admin/live/LiveDagPanel.jsx:3:import { useLiveDag } from "./useLiveDag";
+src/ui/admin/live/LiveDagPanel.jsx:5:export default function LiveDagPanel() {
+src/ui/admin/live/LiveDagPanel.jsx:7:  const nodes = useLiveDag();
+src/ui/admin/live/useAdminLiveDag.js:3:import { bindLiveDag } from "../../../viz/runtime/liveDagBridge";
+src/ui/admin/live/useAdminLiveDag.js:5:export function useAdminLiveDag() {
+src/ui/admin/live/useAdminLiveDag.js:10:    bindLiveDag(socket, setNodes);
+src/ui/admin/live/useLiveDag.js:3:import { bindLiveDagStream } from "../../../viz/runtime/liveDagRuntime";
+src/ui/admin/live/useLiveDag.js:5:export function useLiveDag() {
+src/ui/admin/live/useLiveDag.js:11:    bindLiveDagStream(socket, (event) => {
+src/ui/admin/live/useLiveDagStream.js:3:import { bindLiveDag } from "../../../viz/runtime/liveDagBridge";
+src/ui/admin/live/useLiveDagStream.js:5:export function useLiveDagStream() {
+src/ui/admin/live/useLiveDagStream.js:13:    bindLiveDag(
+src/ui/admin/viz/DagVizPanel.jsx:2:import { initWebGLDag } from "../../../viz/webgl/dagWebGLRenderer";
+src/ui/admin/viz/DagVizPanel.jsx:4:export default function DagVizPanel({ nodes = [] }) {
+src/ui/admin/viz/DagVizPanel.jsx:9:      initWebGLDag(ref.current, nodes);
+src/ui/admin/widgets/DagLivePanel.jsx:4:export default function DagLivePanel({ nodes, apiStatus, wsStatus }) {
+src/viz/replay/dagReplayEngine.js:1:export class DagReplayEngine {
+src/viz/runtime/dagStreamConnector.js:1:export function attachDagStream(socket, onUpdate) {
+src/viz/runtime/liveDagBridge.js:1:export function bindLiveDag(socket, onNodes, onEvents, onHeatmap) {
+src/viz/runtime/liveDagRuntime.js:1:import { normalizeDagEvent } from "../../core/stream/dagStreamContract";
+src/viz/runtime/liveDagRuntime.js:3:export function bindLiveDagStream(socket, onNodes) {
+src/viz/runtime/liveDagRuntime.js:11:        const normalized = normalizeDagEvent(data);
+src/viz/three/forceDag3D.js:1:export function initForceDag3D(nodes = []) {
+src/viz/webgl/dagWebGLRenderer.js:1:export function initWebGLDag(canvas, nodes = []) {
